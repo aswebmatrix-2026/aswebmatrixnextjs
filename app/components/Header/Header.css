@@ -1,0 +1,401 @@
+/* Navbar.css - AS Web Matrix Premium Design with Correct Colors */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #00c49a;  /* Main background color */
+  border-bottom: 4px solid #2b3c56;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(43, 60, 86, 0.2);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.navbar {
+  display: flex;
+  align-items:center;
+  justify-content:space-between;
+  height: 90px;
+  position: relative;
+
+}
+
+/* Logo Section */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo1 {
+  height: 70px;
+  width: auto;
+  filter: brightness(1.1);
+  transition: transform 0.3s ease;
+}
+
+.logo1:hover {
+  transform: scale(1.05);
+}
+
+/* Company Name */
+.company-name {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  border-left: 3px solid #2b3c56;
+  padding-left: 20px;
+  display: none;
+  text-shadow: 2px 2px 4px rgba(43, 60, 86, 0.3);
+}
+
+.company-name span {
+  color: #2b3c56;
+  background: white;
+  padding: 3px 10px;
+  border-radius: 5px;
+  margin-left: 8px;
+  font-size: 1.2rem;
+}
+
+/* Navigation Menu */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 35px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu li {
+  position: relative;
+}
+
+.nav-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 8px 0;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Active Link Style */
+.nav-menu a.active {
+  color: #2b3c56;
+  font-weight: 700;
+}
+
+.nav-menu a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #2b3c56;
+  border-radius: 2px;
+  animation: slideIn 0.5s ease;
+}
+
+/* Hover Effect */
+.nav-menu a:hover {
+  color: #2b3c56;
+}
+
+.nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: #2b3c56;
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.nav-menu a:hover::after {
+  width: 100%;
+}
+
+/* Menu Toggle Button */
+.menu-toggle {
+  display: none;
+  background: #2b3c56;
+  border: 2px solid white;
+  cursor: pointer;
+  font-size: 1.8rem;
+  color: white;
+  gap: 25px;
+  padding: 10px 15px;
+  transition: all 0.3s ease;
+  margin-left: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.menu-toggle:hover {
+  background: #007259;
+  color: white;
+  transform: translateY(-2px);
+  transform: translateX(24px);
+  border-color: #2b3c56;
+}
+
+.menu-toggle i {
+  font-size: 1.5rem;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 992px) {
+  .company-name {
+    display: block;
+  }
+  
+  .nav-menu {
+    display: flex !important;
+  }
+}
+
+/* Tablet Styles */
+@media (max-width: 991px) {
+  .navbar {
+    height: 80px;
+  }
+  
+  .logo1 {
+    height: 55px;
+  }
+  
+  .menu-toggle {
+    display: block;
+  }
+  
+  .logo {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .menu-toggle {
+    margin-left: 0;   /* remove auto margin */
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 80px;
+    left: -100%;
+    width: 300px;
+    height: calc(100vh - 80px);
+    background: white;
+    flex-direction: column;
+    padding: 40px 25px;
+    gap: 20px;
+    transition: left 0.3s ease;
+    overflow-y: auto;
+    z-index: 999;
+    box-shadow: 5px 0 20px rgba(43, 60, 86, 0.2);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+  
+  .nav-menu.active {
+    left: 0;
+  }
+  
+  .nav-menu li {
+    width: 100%;
+    text-align: left;
+  }
+  
+  .nav-menu a {
+    display: block;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    color: #2b3c56;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  .nav-menu a:hover {
+    background: #00c49a;
+    color: white;
+    border-color: #007259;
+    transform: translateX(5px);
+  }
+  
+  .nav-menu a.active {
+    background: #007259;
+    color: white;
+    border-color: #2b3c56;
+  }
+  
+  .nav-menu a.active::after,
+  .nav-menu a::after {
+    display: none;
+  }
+  
+  .header.scrolled {
+    padding: 0;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 576px) {
+  .navbar {
+    height: 70px;
+  }
+  
+  .logo1 {
+    height: 45px;
+  }
+  
+  .container {
+    padding: 0 20px;
+  }
+  
+  .menu-toggle {
+    font-size: 1.3rem;
+    padding: 8px 12px;
+  }
+  
+  .nav-menu {
+    top: 70px;
+    width: 280px;
+    padding: 30px 20px;
+  }
+  
+  .nav-menu a {
+    padding: 12px 15px;
+    font-size: 1rem;
+  }
+}
+
+/* Small Mobile Styles */
+@media (max-width: 360px) {
+  .logo1 {
+    height: 40px;
+  }
+  
+  .company-name {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    padding-left: 10px;
+  }
+  
+  .menu-toggle {
+    font-size: 1.2rem;
+    padding: 6px 10px;
+  }
+  
+  .nav-menu {
+    width: 250px;
+  }
+  
+  .nav-menu a {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Overlay for mobile menu */
+.nav-menu.active::before {
+  content: '';
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 80px);
+  background: rgba(43, 60, 86, 0.5);
+  z-index: -1;
+  animation: fadeIn 0.3s ease;
+}
+
+@media (max-width: 576px) {
+  .nav-menu.active::before {
+    top: 70px;
+    height: calc(100vh - 70px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .header {
+    position: static;
+    background: white;
+    border-bottom: 2px solid #2b3c56;
+  }
+  
+  .menu-toggle {
+    display: none;
+  }
+  
+  .nav-menu {
+    display: flex;
+  }
+  
+  .nav-menu a {
+    color: #2b3c56;
+  }
+}
+
+/* Scrollbar Styling for Mobile Menu */
+.nav-menu::-webkit-scrollbar {
+  width: 5px;
+}
+
+.nav-menu::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.nav-menu::-webkit-scrollbar-thumb {
+  background: #00c49a;
+  border-radius: 5px;
+}
+
+.nav-menu::-webkit-scrollbar-thumb:hover {
+  background: #007259;
+}
