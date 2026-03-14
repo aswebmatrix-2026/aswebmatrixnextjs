@@ -1,21 +1,16 @@
 import { MetadataRoute } from 'next'
 
+export const dynamic = "force-static"
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
-        userAgent: '*',
-        allow: '/',
-        disallow: [
-          '/admin/',
-          '/api/',
-          '/private/',
-          '/*.json$',
-          '/*.xml$'
-        ],
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/admin/", "/api/", "/private/"],
       },
     ],
-    sitemap: 'https://www.aswebmatrix.com/sitemap.xml',
-    host: 'https://www.aswebmatrix.com',
+    sitemap: "https://www.aswebmatrix.com/sitemap.xml",
   }
 }
