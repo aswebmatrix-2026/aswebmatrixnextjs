@@ -119,7 +119,7 @@ const page = () => {
 
   const clients = [
     { name: "PTLR College", icon: "fa-solid fa-building-columns", type: "Education Website", since: "Feb 2026" },
-    { name: "Fusion Advance", icon: "fa-solid fa-microchip", type: "Technology Website", since: "March 2026" },
+    // { name: "Fusion Advance", icon: "fa-solid fa-microchip", type: "Technology Website", since: "March 2026" },
     { name: "SKHealthcare", icon: "fa-solid fa-heart-pulse", type: "Healthcare Website", since: "May 2026" }
   ];
 
