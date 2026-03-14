@@ -1,20 +1,24 @@
-// app/robots.ts
-import { MetadataRoute } from 'next'
+// app/robots.txt/route.ts
+import { NextResponse } from 'next/server'
 
-export default function robots(): MetadataRoute.Robots {
-  return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: [
-        '/admin/',
-        '/api/',
-        '/private/',
-        '/*.json$',
-        '/*.xml$',
-      ],
+export const dynamic = 'force-static'
+
+export async function GET() {
+  const robotsTxt = `User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*.xml$
+
+Sitemap: https://www.aswebmatrix.com/sitemap.xml
+Host: https://www.aswebmatrix.com
+`
+
+  return new NextResponse(robotsTxt, {
+    headers: {
+      'Content-Type': 'text/plain',
     },
-    sitemap: 'https://www.aswebmatrix.com/sitemap.xml',
-    host: 'https://www.aswebmatrix.com',
-  }
+  })
 }
