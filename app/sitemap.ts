@@ -32,7 +32,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: currentDate,
       changeFrequency: 'daily',
       priority: 0.9,
-    }
+    },
     {
       url: `${baseUrl}/services`,
       lastModified: currentDate,
