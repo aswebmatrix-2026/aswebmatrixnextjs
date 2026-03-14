@@ -66,7 +66,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'netherlands/amsterdam'
   ]
 
-  const sitemapEntries = []
+  // FIX: Explicitly type the array
+  const sitemapEntries: MetadataRoute.Sitemap = []
 
   // 1. Main Pages
   const mainPages = [
