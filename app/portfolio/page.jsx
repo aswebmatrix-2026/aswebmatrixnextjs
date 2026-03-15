@@ -1,29 +1,36 @@
-// app/portfolio/page.jsx
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { 
   FaStar, FaStarHalfAlt, FaRegStar, 
   FaGoogle, FaExternalLinkAlt, FaGithub,
   FaCalendarAlt, FaUser,
   FaMapMarkerAlt, FaBriefcase, FaAward,
-  FaRocket, FaHeart, FaUsers
+  FaRocket, FaHeart, FaUsers, FaRupeeSign
 } from 'react-icons/fa';
 import './portfolio.css';
 
 const PortfolioPage = () => {
   const [activeFilter, setActiveFilter] = useState('all');
-  // Loader state and fetch logic removed
+  const [mounted, setMounted] = useState(false);
 
-  // ================== MANUAL GOOGLE REVIEWS (UPDATED) ==================
+  // Component mount hone par check karo
+  useEffect(() => {
+    setMounted(true);
+    console.log('Component mounted');
+    console.log('PROJECT folder path check:', window.location.origin + '/PROJECT/');
+  }, []);
+
+  // ================== MANUAL GOOGLE REVIEWS ==================
   const reviews = [
     {
       id: 1,
       author_name: "PTLR College Faridabad",
       rating: 5,
-      text: "We had a great experience working with Aswebmatrix for our website development. Their team is professional, responsive, and delivers high-quality work. They understood our requirements clearly and created a clean, modern, and user-friendly website for our college. We highly recommend Aswebmatrix for anyone looking for reliable web development services.",
+      text: "We had a great experience working with Aswebmatrix for our website development. Their team is professional, responsive, and delivers high-quality work.",
       relative_time_description: "a day ago",
       profile_photo_url: "",
       source: "Google"
@@ -32,7 +39,7 @@ const PortfolioPage = () => {
       id: 2,
       author_name: "Ripa Sarkar",
       rating: 5,
-      text: "Aswebmatrix offers creative website solutions at reasonable prices. The team is supportive and work quality is impressive.",
+      text: "Aswebmatrix offers creative website solutions at reasonable prices.",
       relative_time_description: "a day ago",
       profile_photo_url: "",
       source: "Google"
@@ -46,12 +53,11 @@ const PortfolioPage = () => {
       profile_photo_url: "",
       source: "Google"
     },
-    // Keeping a few older reviews for variety, but can be removed if only these three are needed
     {
       id: 4,
       author_name: "Sachin Healthcare",
       rating: 5,
-      text: "Thank you for your kind words! I'm really happy that the website is helping your business grow. If anyone in your network needs a professional website at an affordable price, please feel free to connect them with me. I’d love to help them as well.",
+      text: "Thank you for your kind words!",
       relative_time_description: "2 months ago",
       profile_photo_url: "",
       source: "Google"
@@ -62,101 +68,122 @@ const PortfolioPage = () => {
   const projects = [
     {
       id: 1,
-      title: "Fashion Store E-Commerce",
-      description: "Complete e-commerce solution with payment gateway, inventory management, and admin dashboard.",
-      client: "Fashion Store Delhi",
-      category: "ecommerce",
-      techStack: ["Next.js", "Node.js", "MongoDB", "Stripe", "AWS"],
-      results: "3 months mein sales mein 40% increase",
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
-      year: "2024",
+      title: "Taarzan Motors - Car Dealership",
+      description: "Complete e-commerce solution for car sales",
+      client: "Taarzan Motors Delhi",
+      category: "Cars",
+      techStack: ["Demo Website", "HTML5", "CSS3", "JavaScript"],
+      results: "Only for Demo Purpose",
+      liveUrl: "/cars/cars.html",
+      githubUrl: "#",
+      year: "2026",
       rating: 5,
-      image: "/projects/ecommerce.jpg"
+      image: "/PROJECT/T.png"
     },
     {
       id: 2,
-      title: "City Hospital Management System",
-      description: "Complete patient management system with appointment booking, medical records, and telemedicine.",
+      title: "Techno Works - Company Website",
+      description: "Complete patient management system",
       client: "City Hospital",
-      category: "healthcare",
-      techStack: ["React", "Node.js", "PostgreSQL", "Socket.io", "AWS"],
+      category: "Company Websites",
+      techStack: ["Demo Website", "HTML5", "CSS3", "JavaScript"],
       results: "Patient waiting time 60% reduced",
-      liveUrl: "https://example.com",
+      liveUrl: "/company/companywebsite.html",
       year: "2023",
       rating: 5,
-      image: "/projects/healthcare.jpg"
+      image: "/PROJECT/TECHNO WORKS.png"
     },
     {
       id: 3,
-      title: "Dream Homes Real Estate",
-      description: "Property listing platform with advanced search, virtual tours, and agent management.",
+      title: "AS Web Store - E-Commerce",
+      description: "Property listing platform",
       client: "Dream Homes Properties",
       category: "realestate",
-      techStack: ["Vue.js", "Django", "PostgreSQL", "Elasticsearch", "Redis"],
+      techStack: ["Demo Website", "HTML5", "CSS3", "JavaScript"],
       results: "3 months mein 500+ leads generated",
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
+      liveUrl: "/ecommerce/ecommerce.html",
+      githubUrl: "#",
       year: "2024",
       rating: 4.5,
-      image: "/projects/realestate.jpg"
+      image: "/PROJECT/ASWebStore.png"
     },
     {
       id: 4,
-      title: "LearnSmart Education Platform",
-      description: "Online learning platform with video courses, quizzes, and student progress tracking.",
+      title: "Foodie's Paradise - Restaurant",
+      description: "Online learning platform",
       client: "Jain Coaching Center",
-      category: "education",
-      techStack: ["Next.js", "Python", "MongoDB", "Firebase", "Zoom API"],
+      category: "restaurant",
+      techStack: ["Demo Website", "HTML5", "CSS3", "JavaScript"],
       results: "3000+ students online enrolled",
-      liveUrl: "https://example.com",
+      liveUrl: "/resturant/resturant.html",
       year: "2023",
       rating: 5,
-      image: "/projects/education.jpg"
+      image: "/PROJECT/restaurant.png"
     },
     {
       id: 5,
-      title: "Foodie's Paradise Restaurant",
-      description: "Complete restaurant management with online ordering and table reservation.",
+      title: "AS School - Education",
+      description: "Complete restaurant management",
       client: "Foodie's Paradise",
-      category: "restaurant",
-      techStack: ["React", "Node.js", "MySQL", "Redis", "Razorpay"],
+      category: "education",
+      techStack: ["Demo Website", "HTML5", "CSS3", "JavaScript"],
       results: "Online orders mein 200% increase",
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
+      liveUrl: "/schools/schools.html",
+      githubUrl: "#",
       year: "2024",
       rating: 5,
-      image: "/projects/restaurant.jpg"
+      image: "/PROJECT/schools.png"
     },
     {
       id: 6,
-      title: "Wanderlust Travel Portal",
-      description: "Travel booking platform with packages, hotel bookings, and tour management.",
+      title: "Tour & Travels - Tourism",
+      description: "Travel booking platform",
       client: "Wanderlust Travels",
       category: "travel",
-      techStack: ["Next.js", "Node.js", "MongoDB", "PayPal", "Google Maps"],
+      techStack: ["Demo Website", "HTML5", "CSS3", "JavaScript"],
       results: "300+ bookings in first month",
-      liveUrl: "https://example.com",
+      liveUrl: "/travel/travel.html",
       year: "2023",
       rating: 4.5,
-      image: "/projects/travel.jpg"
+      image: "/PROJECT/tour.png"
     }
   ];
 
   // ================== FILTERS ==================
   const filters = [
     { id: 'all', name: 'All Projects', count: projects.length },
-    { id: 'ecommerce', name: 'E-Commerce', count: projects.filter(p => p.category === 'ecommerce').length },
-    { id: 'healthcare', name: 'Healthcare', count: projects.filter(p => p.category === 'healthcare').length },
-    { id: 'realestate', name: 'Real Estate', count: projects.filter(p => p.category === 'realestate').length },
+    { id: 'Cars', name: 'Cars', count: projects.filter(p => p.category === 'Cars').length },
+    { id: 'Company Websites', name: 'Company Websites', count: projects.filter(p => p.category === 'Company Websites').length },
+    { id: 'realestate', name: 'E-commerce', count: projects.filter(p => p.category === 'realestate').length },
     { id: 'education', name: 'Education', count: projects.filter(p => p.category === 'education').length },
     { id: 'restaurant', name: 'Restaurant', count: projects.filter(p => p.category === 'restaurant').length },
     { id: 'travel', name: 'Travel', count: projects.filter(p => p.category === 'travel').length }
   ];
 
-  const filteredProjects = activeFilter === 'all' 
-    ? projects 
-    : projects.filter(p => p.category === activeFilter);
+  // Filter change handler with debugging
+  const handleFilterChange = (filterId) => {
+    console.log('Filter clicked:', filterId);
+    console.log('Previous filter:', activeFilter);
+    setActiveFilter(filterId);
+    console.log('New filter set to:', filterId);
+  };
+
+  // Filtered projects with debugging
+  const getFilteredProjects = () => {
+    console.log('Getting filtered projects for:', activeFilter);
+    if (activeFilter === 'all') {
+      console.log('Returning all projects:', projects.length);
+      return projects;
+    }
+    const filtered = projects.filter(p => {
+      console.log(`Checking project ${p.title}: category=${p.category}, filter=${activeFilter}, match=${p.category === activeFilter}`);
+      return p.category === activeFilter;
+    });
+    console.log(`Filtered projects count:`, filtered.length);
+    return filtered;
+  };
+
+  const filteredProjects = getFilteredProjects();
 
   // ================== RENDER STARS ==================
   const renderStars = (rating) => {
@@ -184,11 +211,48 @@ const PortfolioPage = () => {
     { icon: FaHeart, value: "100%", label: "Satisfaction" }
   ];
 
-  // Loading state and return removed, directly rendering the page
+  // Project link click handler with debugging
+  const handleProjectClick = (e, url, title) => {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('Project link clicked:', title);
+    console.log('URL:', url);
+    console.log('Full URL:', window.location.origin + url);
+    
+    try {
+      // Check if file exists
+      fetch(url, { method: 'HEAD' })
+        .then(response => {
+          console.log('File check response:', response.status);
+          if (response.ok) {
+            console.log('File exists, opening...');
+            window.open(url, '_blank');
+          } else {
+            console.log('File not found, status:', response.status);
+            alert('Demo website file not found. Please check if the file exists in the PROJECT folder.');
+          }
+        })
+        .catch(error => {
+          console.error('Error checking file:', error);
+          // Still try to open
+          window.open(url, '_blank');
+        });
+    } catch (error) {
+      console.error('Error in handleProjectClick:', error);
+      alert('Error opening demo website. Please try again.');
+    }
+  };
 
   return (
     <div className="portfolio-page">
       
+      {/* Debug Info */}
+      {mounted && (
+        <div style={{ display: 'none' }}>
+          Debug: Active Filter = {activeFilter}
+        </div>
+      )}
+
       {/* ========== HERO SECTION ========== */}
       <section className="hero-section">
         <div className="hero-pattern"></div>
@@ -310,8 +374,25 @@ const PortfolioPage = () => {
               Our <span className="section-title-highlight">Projects</span>
             </h2>
             <p className="section-subtitle">
-              Check out some of our recent work
+              Check out some of our recent work - All websites are available in just ₹3000/-
             </p>
+          </motion.div>
+
+          {/* Price Banner */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="price-banner"
+          >
+            <div className="price-banner-content">
+              <FaRupeeSign className="price-icon" />
+              <h3 className="price-title">Special Offer: All Websites Available for Just ₹3000/-</h3>
+              <p className="price-text">Get any demo website fully customized for your business at this amazing price!</p>
+              <Link href="/contact" className="price-button">
+                Claim This Offer
+              </Link>
+            </div>
           </motion.div>
 
           {/* Filter Buttons */}
@@ -319,7 +400,10 @@ const PortfolioPage = () => {
             {filters.map((filter) => (
               <button
                 key={filter.id}
-                onClick={() => setActiveFilter(filter.id)}
+                onClick={() => {
+                  console.log('Filter button clicked:', filter.id);
+                  handleFilterChange(filter.id);
+                }}
                 className={`filter-btn ${activeFilter === filter.id ? 'active' : ''}`}
               >
                 {filter.name} <span className="filter-count">{filter.count}</span>
@@ -329,78 +413,102 @@ const PortfolioPage = () => {
 
           {/* Projects Grid */}
           <div className="projects-grid">
-            {filteredProjects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="project-card"
-              >
-                <div className="project-image">
-                  <div className="project-image-placeholder">
-                    <span className="project-category">{project.category}</span>
-                  </div>
-                </div>
-                
-                <div className="project-content">
-                  <h3 className="project-title">{project.title}</h3>
-                  <p className="project-description">{project.description}</p>
-                  
-                  <div className="project-tech">
-                    {project.techStack.slice(0, 4).map((tech, i) => (
-                      <span key={i} className="tech-tag">{tech}</span>
-                    ))}
-                  </div>
-                  
-                  <div className="project-meta">
-                    <span className="meta-item">
-                      <FaUser className="meta-icon" />
-                      {project.client}
-                    </span>
-                    <span className="meta-item">
-                      <FaCalendarAlt className="meta-icon" />
-                      {project.year}
-                    </span>
+            {filteredProjects.length > 0 ? (
+              filteredProjects.map((project, index) => (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="project-card"
+                >
+                  <div className="project-image">
+                    {project.image ? (
+                      <img 
+                        src={project.image} 
+                        alt={project.title}
+                        className="project-img"
+                        onError={(e) => {
+                          console.log('Image failed to load:', project.image);
+                          e.target.onerror = null;
+                          e.target.src = "/PROJECT/placeholder.jpg";
+                        }}
+                        onLoad={() => console.log('Image loaded successfully:', project.image)}
+                      />
+                    ) : (
+                      <div className="project-image-placeholder">
+                        <span className="project-category">{project.category}</span>
+                      </div>
+                    )}
+                    <div className="project-price-tag">
+                      <FaRupeeSign /> 3000/-
+                    </div>
                   </div>
                   
-                  <div className="project-results">
-                    <strong>Results:</strong> {project.results}
-                  </div>
-                  
-                  <div className="project-footer">
-                    <div className="project-rating">
-                      {renderStars(project.rating)}
+                  <div className="project-content">
+                    <h3 className="project-title">{project.title}</h3>
+                    <p className="project-description">{project.description}</p>
+                    
+                    <div className="project-tech">
+                      {project.techStack.map((tech, i) => (
+                        <span key={i} className="tech-tag">{tech}</span>
+                      ))}
                     </div>
                     
-                    <div className="project-links">
-                      {project.liveUrl && (
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="project-link"
-                          title="Live Preview"
-                        >
-                          <FaExternalLinkAlt />
-                        </a>
-                      )}
-                      {project.githubUrl && (
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="project-link"
-                          title="View Code"
-                        >
-                          <FaGithub />
-                        </a>
-                      )}
+                    <div className="project-meta">
+                      <span className="meta-item">
+                        <FaUser className="meta-icon" />
+                        {project.client}
+                      </span>
+                      <span className="meta-item">
+                        <FaCalendarAlt className="meta-icon" />
+                        {project.year}
+                      </span>
+                    </div>
+                    
+                    <div className="project-results">
+                      <strong>Results:</strong> {project.results}
+                    </div>
+                    
+                    <div className="project-footer">
+                      <div className="project-rating">
+                        {renderStars(project.rating)}
+                      </div>
+                      
+                      <div className="project-links">
+                        {project.liveUrl && (
+                          <a
+                            href={project.liveUrl}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              console.log('Demo link clicked for:', project.title);
+                              console.log('URL:', project.liveUrl);
+                              console.log('Full URL:', window.location.origin + project.liveUrl);
+                              
+                              // Try to open directly
+                              const fullUrl = window.location.origin + project.liveUrl;
+                              window.open(fullUrl, '_blank');
+                              
+                              // Alternative: try relative path
+                              // window.open(project.liveUrl, '_blank');
+                            }}
+                            className="project-link"
+                            title="View Demo"
+                          >
+                            <FaExternalLinkAlt />
+                          </a>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))
+            ) : (
+              <div className="no-projects">
+                <p>No projects found in this category.</p>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -417,6 +525,9 @@ const PortfolioPage = () => {
             <h2 className="cta-title">Ready to Start Your Project?</h2>
             <p className="cta-text">
               Join our happy clients and let's build something amazing together
+            </p>
+            <p className="cta-price-highlight">
+              All websites starting from just <span className="price-highlight">₹3000/-</span>
             </p>
             <Link href="/contact" className="cta-button">
               Get in Touch
