@@ -1,4 +1,4 @@
-// app/page.jsx
+// app/page.tsx
 import React from 'react';
 import Link from 'next/link';
 import './home/home.css';
@@ -57,46 +57,6 @@ const jsonLd = {
   }
 };
 
-// Real Google Reviews Data
-const reviews = [
-  {
-    id: 1,
-    author_name: "PTLR College Faridabad",
-    rating: 5,
-    text: "We had a great experience working with Aswebmatrix for our website development. Their team is professional, responsive, and delivers high-quality work.",
-    relative_time_description: "a day ago",
-    profile_photo_url: "",
-    source: "Google"
-  },
-  {
-    id: 2,
-    author_name: "Ripa Sarkar",
-    rating: 5,
-    text: "Aswebmatrix offers creative website solutions at reasonable prices.",
-    relative_time_description: "a day ago",
-    profile_photo_url: "",
-    source: "Google"
-  },
-  {
-    id: 3,
-    author_name: "Narayan Kumar",
-    rating: 5,
-    text: "Good team for website development and SEO solutions",
-    relative_time_description: "a day ago",
-    profile_photo_url: "",
-    source: "Google"
-  },
-  {
-    id: 4,
-    author_name: "Sachin Healthcare",
-    rating: 5,
-    text: "Thank you for your kind words!",
-    relative_time_description: "2 months ago",
-    profile_photo_url: "",
-    source: "Google"
-  },
-];
-
 const Page = () => {
   // Real client projects data
   const featuredProjects = [
@@ -149,25 +109,6 @@ const Page = () => {
     { name: "AS Web Store", category: "E-commerce Demo", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80", result: "200% sales growth in 3 months" },
     { name: "Restaurant Website", category: "Food & Beverage", image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80", result: "Online orders increased by 120%" }
   ];
-
-  // Function to render stars based on rating
-  const renderStars = (rating) => {
-    const stars = [];
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 !== 0;
-    
-    for (let i = 0; i < fullStars; i++) {
-      stars.push(<i key={`star-${i}`} className="fas fa-star"></i>);
-    }
-    if (hasHalfStar) {
-      stars.push(<i key="half-star" className="fas fa-star-half-alt"></i>);
-    }
-    const emptyStars = 5 - stars.length;
-    for (let i = 0; i < emptyStars; i++) {
-      stars.push(<i key={`empty-${i}`} className="far fa-star"></i>);
-    }
-    return stars;
-  };
 
   return (
     <>
@@ -355,49 +296,6 @@ const Page = () => {
                   <p>{item.category}</p>
                 </div>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonials Section - Real Google Reviews */}
-        <section className="testimonials-section">
-          <div className="container">
-            <div className="section-header">
-              <span className="section-subtitle">Google Reviews</span>
-              <h2 className="section-title">What Our <span>Clients Say</span></h2>
-              <p className="section-description">
-                Real reviews from real clients on Google
-              </p>
-            </div>
-            <div className="testimonials-grid">
-              {reviews.map((review) => (
-                <div className="testimonial-card" key={review.id}>
-                  <div className="testimonial-header">
-                    <div className="testimonial-rating">
-                      {renderStars(review.rating)}
-                      <span className="rating-value">{review.rating}.0</span>
-                    </div>
-                    <div className="google-badge">
-                      <i className="fab fa-google"></i> Google Review
-                    </div>
-                  </div>
-                  <p className="testimonial-content">"{review.text}"</p>
-                  <div className="testimonial-author">
-                    <div className="author-avatar">
-                      {review.author_name.charAt(0)}
-                    </div>
-                    <div className="author-info">
-                      <h4>{review.author_name}</h4>
-                      <p>{review.relative_time_description}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="testimonials-footer">
-              <a href="https://g.page/r/Cd3Kx9r6H0VXEAE/review" target="_blank" rel="noopener noreferrer" className="review-cta">
-                <i className="fab fa-google"></i> Leave us a review on Google
-              </a>
             </div>
           </div>
         </section>
