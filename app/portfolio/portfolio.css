@@ -390,6 +390,164 @@ body {
   color: var(--gray-500);
 }
 
+
+.reviews-section {
+  padding: 6rem 0;
+  background: var(--white);
+}
+
+.google-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.google-icon {
+  font-size: 3rem;
+  color: var(--primary);
+}
+
+.google-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.rating-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.stars-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.star-filled,
+.star-half,
+.star-empty {
+  font-size: 1.5rem;
+}
+
+.star-filled { color: #fbbf24; }
+.star-half { color: #fbbf24; }
+.star-empty { color: #d1d5db; }
+
+.rating-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.rating-count {
+  font-size: 1.25rem;
+  color: var(--gray-500);
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.review-card {
+  background: var(--white);
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-lg);
+  transition: all 0.3s ease;
+  border: 1px solid var(--gray-200);
+  overflow: hidden;
+  height: 100%;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary-light);
+}
+
+.review-card-inner {
+  padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.reviewer-avatar {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: var(--primary-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.reviewer-info {
+  flex: 1;
+}
+
+.reviewer-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 0.25rem;
+}
+
+.review-time {
+  font-size: 0.875rem;
+  color: var(--gray-500);
+}
+
+.review-rating {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.review-text {
+  color: var(--gray-700);
+  line-height: 1.7;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  flex: 1;
+}
+
+.review-source {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--gray-200);
+  margin-top: auto;
+}
+
+.source-icon {
+  color: var(--primary);
+  font-size: 1rem;
+}
+
+.source-text {
+  font-size: 0.875rem;
+  color: var(--gray-500);
+}
 /* ==================== PROJECTS SECTION ==================== */
 .projects-section {
   padding: 6rem 0;

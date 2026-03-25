@@ -1,63 +1,26 @@
 // app/page.tsx
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Link from 'next/link';
-import './home.css';
+import './home/home.css';
+import ConsultationPopup from './components/ConsultationPopup';
+import { motion } from 'framer-motion';
+import { 
+  FaStar, FaStarHalfAlt, FaRegStar, 
+  FaGoogle, FaExternalLinkAlt, FaGithub,
+  FaCalendarAlt, FaUser,
+  FaMapMarkerAlt, FaBriefcase, FaAward,
+  FaRocket, FaHeart, FaUsers, FaRupeeSign
+} from 'react-icons/fa';
 
-// Metadata for the home page
-export const metadata = {
-  title: "AS Web Matrix | Website Development & Digital Marketing Agency | Faridabad, India",
-  description: "AS Web Matrix is a trusted web development agency in Faridabad, India. We build high-performance websites for businesses, schools, and healthcare providers. 50+ projects delivered, 35+ happy clients. Get a free quote today!",
-  keywords: "web development agency Faridabad, website development company, digital marketing services, MERN stack development, WordPress development, SEO services Faridabad, PTLR College website, SK Healthcare, e-commerce development",
-  openGraph: {
-    title: "AS Web Matrix - Build a Website That Grows Your Business",
-    description: "Trusted by 35+ businesses including PTLR College and SK Healthcare. We deliver custom websites and digital solutions that generate real results.",
-    type: "website",
-    url: "https://www.aswebmatrix.com",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "AS Web Matrix - Web Development & Digital Marketing Agency",
-    description: "Custom websites, SEO, and digital marketing that deliver results. 50+ projects completed.",
-  },
-};
-
-// JSON-LD Schema with real data
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "AS Web Matrix",
-  "url": "https://www.aswebmatrix.com",
-  "telephone": "+91-9718401731",
-  "email": "aswebmatrix@gmail.com",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "2578, Sec-23 A",
-    "addressLocality": "Faridabad",
-    "addressRegion": "Haryana",
-    "postalCode": "121005",
-    "addressCountry": "IN"
-  },
-  "areaServed": ["Faridabad", "Delhi NCR", "India"],
-  "numberOfProjects": "50+",
-  "numberOfClients": "35+",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "35"
-  },
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Web Development & Digital Marketing Services",
-    "itemListElement": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Web Development" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "MERN Stack Development" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "WordPress Development" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO Optimization" } }
-    ]
-  }
-};
+// Metadata for the home page (Note: 'use client' components can't export metadata directly)
+// Move metadata to a separate file or keep in layout.tsx
+// For now, we'll comment it out and you can add it to your layout.tsx
 
 const Page = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  
   // Real client projects data
   const featuredProjects = [
     { name: "PTLR College Faridabad", category: "Education Website", type: "college" },
@@ -69,6 +32,61 @@ const Page = () => {
     { name: "Travel Website", category: "Travel & Tourism", type: "travel" }
   ];
 
+  const reviews = [
+    {
+      id: 1,
+      author_name: "PTLR College Faridabad",
+      rating: 5,
+      text: "We had a great experience working with Aswebmatrix for our website development. Their team is professional, responsive, and delivers high-quality work.",
+      relative_time_description: "a day ago",
+      profile_photo_url: "",
+      source: "Google"
+    },
+    {
+      id: 2,
+      author_name: "Ripa Sarkar",
+      rating: 5,
+      text: "Aswebmatrix offers creative website solutions at reasonable prices.",
+      relative_time_description: "a day ago",
+      profile_photo_url: "",
+      source: "Google"
+    },
+    {
+      id: 3,
+      author_name: "Narayan Kumar",
+      rating: 5,
+      text: "Good team for website development and SEO solutions",
+      relative_time_description: "a day ago",
+      profile_photo_url: "",
+      source: "Google"
+    },
+    {
+      id: 4,
+      author_name: "Sachin Healthcare",
+      rating: 5,
+      text: "Thank you for your kind words!",
+      relative_time_description: "2 months ago",
+      profile_photo_url: "",
+      source: "Google"
+    },
+  ];
+
+ const renderStars = (rating) => {
+    const stars = [];
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 !== 0;
+
+    for (let i = 1; i <= 5; i++) {
+      if (i <= fullStars) {
+        stars.push(<FaStar key={i} className="star-filled" />);
+      } else if (i === fullStars + 1 && hasHalfStar) {
+        stars.push(<FaStarHalfAlt key={i} className="star-half" />);
+      } else {
+        stars.push(<FaRegStar key={i} className="star-empty" />);
+      }
+    }
+    return stars;
+  };
   // Real services data
   const services = [
     { icon: "fas fa-code", title: "Custom Web Development", description: "We build fast, modern websites that convert visitors into customers", color: "#00c49a" },
@@ -87,7 +105,7 @@ const Page = () => {
 
   // Why choose us points
   const whyChooseUs = [
-    { icon: "fas fa-check-circle", title: "Real Client Experience", description: "35+ businesses trust us for their online presence" },
+    { icon: "fas fa-check-circle", title: "Real Client Experience", description: "5+ businesses trust us for their online presence" },
     { icon: "fas fa-rocket", title: "Fast Delivery", description: "Get your website live in days, not months" },
     { icon: "fas fa-code-branch", title: "Custom Development", description: "No templates - every site is built for your needs" },
     { icon: "fas fa-tag", title: "Affordable Solutions", description: "Premium quality at competitive rates" },
@@ -104,11 +122,47 @@ const Page = () => {
 
   // Portfolio items for showcase
   const portfolioItems = [
-    { name: "PTLR College Faridabad", category: "Education Website", image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80", result: "Student inquiries increased by 150%" },
-    { name: "SK Healthcare", category: "Healthcare Website", image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80", result: "Patient appointments up 80%" },
-    { name: "AS Web Store", category: "E-commerce Demo", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80", result: "200% sales growth in 3 months" },
-    { name: "Restaurant Website", category: "Food & Beverage", image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80", result: "Online orders increased by 120%" }
+    { name: "PTLR College Faridabad", category: "Education Website", image: "/images/ptlr.png", result: "Student inquiries increased by 100%" },
+    { name: "SK Healthcare", category: "Healthcare Website", image: "/images/sk.png", result: "Patient appointments up 80%" },
+    { name: "AS Web Store", category: "E-commerce Demo", image: "/images/ASWebStore.png" },
+    { name: "Restaurant Website", category: "Food & Beverage", image: "/images/restaurant.png" }
   ];
+
+  // JSON-LD Schema with real data
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "AS Web Matrix",
+    "url": "https://www.aswebmatrix.com",
+    "telephone": "+91-9718401731",
+    "email": "aswebmatrix@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "2578, Sec-23 A",
+      "addressLocality": "Faridabad",
+      "addressRegion": "Haryana",
+      "postalCode": "121005",
+      "addressCountry": "IN"
+    },
+    "areaServed": ["Faridabad", "Delhi NCR", "India"],
+    "numberOfProjects": "50+",
+    "numberOfClients": "35+",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "35"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Web Development & Digital Marketing Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Web Development" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "MERN Stack Development" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "WordPress Development" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO Optimization" } }
+      ]
+    }
+  };
 
   return (
     <>
@@ -129,6 +183,16 @@ const Page = () => {
           <span>Chat on WhatsApp</span>
         </a>
 
+        {/* Floating Consultation Button */}
+        <button 
+          onClick={() => setIsPopupOpen(true)} 
+          className="floating-consult-btn"
+          aria-label="Get Free Consultation"
+        >
+          <i className="fas fa-chalkboard-user"></i>
+          <span>Free Consultation</span>
+        </button>
+
         {/* Hero Section */}
         <section className="hero">
           <div className="hero-overlay"></div>
@@ -144,11 +208,13 @@ const Page = () => {
                 Trusted by 35+ businesses, we create websites and digital solutions that generate leads and boost your online presence.
               </p>
               <div className="hero-stats animate-slide-up-delay-2">
-                <span><i className="fas fa-check-circle"></i> 50+ Projects Delivered</span>
+                <span><i className="fas fa-check-circle"></i> 5+ Projects Delivered</span>
                 <span><i className="fas fa-star"></i> 4.9 Google Rating</span>
               </div>
               <div className="hero-buttons">
-                <Link href="#portfolio" className="cta-button primary">View Our Work</Link>
+                <button onClick={() => setIsPopupOpen(true)} className="cta-button primary">
+                  Get Free Consultation
+                </button>
                 <a href="https://wa.me/919718401731?text=Hi%20AS%20Web%20Matrix%2C%20I'm%20interested%20in%20building%20a%20website%20for%20my%20business" 
                    className="cta-button whatsapp" 
                    target="_blank" 
@@ -165,12 +231,12 @@ const Page = () => {
           <div className="container">
             <div className="trust-grid">
               <div className="trust-card">
-                <div className="trust-number">50+</div>
+                <div className="trust-number">5+</div>
                 <div className="trust-label">Projects Completed</div>
                 <i className="fas fa-laptop-code"></i>
               </div>
               <div className="trust-card">
-                <div className="trust-number">35+</div>
+                <div className="trust-number">10+</div>
                 <div className="trust-label">Happy Clients</div>
                 <i className="fas fa-smile"></i>
               </div>
@@ -284,18 +350,25 @@ const Page = () => {
                     <img src={item.image} alt={item.name} />
                     <div className="portfolio-overlay">
                       <span className="portfolio-category">{item.category}</span>
-                      <div className="portfolio-result">
-                        <i className="fas fa-chart-line"></i> {item.result}
-                      </div>
-                      <a href="#" className="live-preview-btn" target="_blank" rel="noopener noreferrer">
-                        View Project <i className="fas fa-arrow-right"></i>
-                      </a>
+                      {item.result && (
+                        <div className="portfolio-result">
+                          <i className="fas fa-chart-line"></i> {item.result}
+                        </div>
+                      )}
+                      <button onClick={() => setIsPopupOpen(true)} className="live-preview-btn">
+                        Get Quote <i className="fas fa-arrow-right"></i>
+                      </button>
                     </div>
                   </div>
                   <h3>{item.name}</h3>
                   <p>{item.category}</p>
                 </div>
               ))}
+            </div>
+            <div className="view-more-wrapper">
+              <button onClick={() => setIsPopupOpen(true)} className="view-more-btn">
+                Get Free Consultation <i className="fas fa-arrow-right"></i>
+              </button>
             </div>
           </div>
         </section>
@@ -374,6 +447,65 @@ const Page = () => {
             </div>
           </div>
         </section>
+<section className="reviews-section">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="section-header"
+          >
+            <div className="google-badge">
+              <FaGoogle className="google-icon" />
+              <span className="google-title">Google Reviews</span>
+            </div>
+            <div className="rating-display">
+              <div className="stars-container">
+                {renderStars(4.9)}
+              </div>
+              <span className="rating-value">4.9</span>
+              <span className="rating-count">({reviews.length} reviews)</span>
+            </div>
+          </motion.div>
+
+          <div className="reviews-grid">
+            {reviews.map((review, index) => (
+              <motion.div
+                key={review.id || index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="review-card"
+              >
+                <div className="review-card-inner">
+                  <div className="review-header">
+                    <div className="reviewer-avatar">
+                      {review.author_name?.charAt(0) || 'U'}
+                    </div>
+                    <div className="reviewer-info">
+                      <h3 className="reviewer-name">{review.author_name}</h3>
+                      <span className="review-time">{review.relative_time_description}</span>
+                    </div>
+                  </div>
+                  
+                  <div className="review-rating">
+                    {renderStars(review.rating)}
+                  </div>
+                  
+                  <p className="review-text">
+                    "{review.text}"
+                  </p>
+                  
+                  <div className="review-source">
+                    <FaGoogle className="source-icon" />
+                    <span className="source-text">Google Review</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
         {/* Final CTA Section */}
         <section className="final-cta">
@@ -382,50 +514,15 @@ const Page = () => {
               <h2>Ready to Build Your Website?</h2>
               <p>Join 35+ businesses growing with AS Web Matrix</p>
               <div className="cta-buttons">
-                <Link href="#contact" className="cta-button primary large">Start Your Project</Link>
+                <button onClick={() => setIsPopupOpen(true)} className="cta-button primary large">
+                  Get Free Consultation
+                </button>
                 <a href="https://wa.me/919718401731?text=Hi%20AS%20Web%20Matrix%2C%20I'm%20interested%20in%20building%20a%20website%20for%20my%20business" 
                    className="cta-button outline large" 
                    target="_blank" 
                    rel="noopener noreferrer">
                   Contact Now
                 </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Contact Preview Section */}
-        <section id="contact" className="contact-preview-section">
-          <div className="container">
-            <div className="contact-preview-card">
-              <h3>Get a Free Consultation</h3>
-              <p>Tell us about your project, and we'll get back to you within 24 hours</p>
-              <form className="contact-preview-form">
-                <div className="form-group">
-                  <input type="text" placeholder="Your Name" required />
-                </div>
-                <div className="form-group">
-                  <input type="tel" placeholder="Phone Number" required />
-                </div>
-                <div className="form-group">
-                  <input type="email" placeholder="Email Address" required />
-                </div>
-                <div className="form-group">
-                  <select required>
-                    <option value="">I'm interested in...</option>
-                    <option value="web">Website Development</option>
-                    <option value="seo">SEO & Digital Marketing</option>
-                    <option value="ecommerce">E-commerce Solution</option>
-                    <option value="other">Other Services</option>
-                  </select>
-                </div>
-                <button type="submit" className="submit-btn">
-                  Send Request <i className="fas fa-paper-plane"></i>
-                </button>
-              </form>
-              <div className="contact-note">
-                <i className="fas fa-clock"></i> Response within 24 hours | 
-                <i className="fas fa-phone-alt"></i> <a href="tel:+919718401731">+91-9718401731</a>
               </div>
             </div>
           </div>
@@ -459,7 +556,88 @@ const Page = () => {
             </div>
           </div>
         </section>
+
+        {/* Consultation Popup */}
+        <ConsultationPopup 
+          isOpen={isPopupOpen} 
+          onClose={() => setIsPopupOpen(false)} 
+        />
       </div>
+
+      <style jsx>{`
+        .floating-consult-btn {
+          position: fixed;
+          bottom: 30px;
+          left: 30px;
+          background: linear-gradient(135deg, #00c49a, #00a37a);
+          border: none;
+          padding: 12px 24px;
+          border-radius: 50px;
+          color: white;
+          font-weight: 600;
+          cursor: pointer;
+          z-index: 999;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          box-shadow: 0 5px 20px rgba(0, 196, 154, 0.4);
+          transition: all 0.3s ease;
+          font-size: 14px;
+        }
+
+        .floating-consult-btn:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 25px rgba(0, 196, 154, 0.5);
+        }
+
+        .floating-consult-btn i {
+          font-size: 18px;
+        }
+
+        .view-more-wrapper {
+          text-align: center;
+          margin-top: 40px;
+        }
+
+        .view-more-btn {
+          background: transparent;
+          border: 2px solid #00c49a;
+          padding: 12px 30px;
+          border-radius: 50px;
+          color: #00c49a;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          font-size: 16px;
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .view-more-btn:hover {
+          background: #00c49a;
+          color: white;
+          transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+          .floating-consult-btn span {
+            display: none;
+          }
+          
+          .floating-consult-btn {
+            padding: 12px;
+            border-radius: 50%;
+            bottom: 20px;
+            left: 20px;
+          }
+          
+          .floating-consult-btn i {
+            margin: 0;
+            font-size: 20px;
+          }
+        }
+      `}</style>
     </>
   );
 };
