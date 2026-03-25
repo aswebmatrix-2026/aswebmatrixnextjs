@@ -3,7 +3,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import './home/home.css';
+import './home.css';
 import ConsultationPopup from './components/ConsultationPopup';
 import { motion } from 'framer-motion';
 import { 
@@ -14,9 +14,6 @@ import {
   FaRocket, FaHeart, FaUsers, FaRupeeSign
 } from 'react-icons/fa';
 
-// Metadata for the home page (Note: 'use client' components can't export metadata directly)
-// Move metadata to a separate file or keep in layout.tsx
-// For now, we'll comment it out and you can add it to your layout.tsx
 
 const Page = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
