@@ -65,9 +65,12 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         />
+        
         <link rel="canonical" href="https://www.aswebmatrix.com" />
+        <meta name="google-adsense-account" content="ca-pub-2064423755916952" />
         <meta name="geo.region" content="IN" />
         <meta name="geo.placename" content="Faridabad, Delhi NCR" />
+       
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Header />
@@ -195,13 +198,6 @@ export default function RootLayout({
           }}
         />
 
-        {/* Google AdSense */}
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2064423755916952"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
       </body>
     </html>
   );
