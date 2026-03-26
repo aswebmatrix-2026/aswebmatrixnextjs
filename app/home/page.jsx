@@ -79,22 +79,23 @@ const Page = () => {
   ];
 
   /** Render star rating component */
-  const renderStars = (rating: number) => {
-    const stars = [];
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 !== 0;
+  // Remove the type annotation from renderStars
+const renderStars = (rating) => {
+  const stars = [];
+  const fullStars = Math.floor(rating);
+  const hasHalfStar = rating % 1 !== 0;
 
-    for (let i = 1; i <= 5; i++) {
-      if (i <= fullStars) {
-        stars.push(<FaStar key={i} className="star-filled" />);
-      } else if (i === fullStars + 1 && hasHalfStar) {
-        stars.push(<FaStarHalfAlt key={i} className="star-half" />);
-      } else {
-        stars.push(<FaRegStar key={i} className="star-empty" />);
-      }
+  for (let i = 1; i <= 5; i++) {
+    if (i <= fullStars) {
+      stars.push(<FaStar key={i} className="star-filled" />);
+    } else if (i === fullStars + 1 && hasHalfStar) {
+      stars.push(<FaStarHalfAlt key={i} className="star-half" />);
+    } else {
+      stars.push(<FaRegStar key={i} className="star-empty" />);
     }
-    return stars;
-  };
+  }
+  return stars;
+};
 
   /** Service offerings */
   const services = [
