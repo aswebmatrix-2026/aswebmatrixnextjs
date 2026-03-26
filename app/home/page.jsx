@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import './home.css';
-import ConsultationPopup from './components/ConsultationPopup';
+
 import { motion } from 'framer-motion';
 import { 
   FaStar, FaStarHalfAlt, FaRegStar, 
