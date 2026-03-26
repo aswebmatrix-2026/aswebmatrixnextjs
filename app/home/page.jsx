@@ -14,11 +14,20 @@ import {
   FaRocket, FaHeart, FaUsers, FaRupeeSign
 } from 'react-icons/fa';
 
-
+/**
+ * Home Page Component
+ * 
+ * Note: Metadata should be defined in a parent layout.tsx or via Next.js 14+ metadata API.
+ * This component uses 'use client' to support interactive features like the consultation popup.
+ */
 const Page = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   
-  // Real client projects data
+  // ============================================================================
+  // Data Models
+  // ============================================================================
+
+  /** Client projects showcase */
   const featuredProjects = [
     { name: "PTLR College Faridabad", category: "Education Website", type: "college" },
     { name: "SK Healthcare", category: "Healthcare Website", type: "healthcare" },
@@ -29,6 +38,7 @@ const Page = () => {
     { name: "Travel Website", category: "Travel & Tourism", type: "travel" }
   ];
 
+  /** Customer reviews sourced from Google */
   const reviews = [
     {
       id: 1,
@@ -68,7 +78,8 @@ const Page = () => {
     },
   ];
 
- const renderStars = (rating) => {
+  /** Render star rating component */
+  const renderStars = (rating: number) => {
     const stars = [];
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 !== 0;
@@ -84,7 +95,8 @@ const Page = () => {
     }
     return stars;
   };
-  // Real services data
+
+  /** Service offerings */
   const services = [
     { icon: "fas fa-code", title: "Custom Web Development", description: "We build fast, modern websites that convert visitors into customers", color: "#00c49a" },
     { icon: "fab fa-react", title: "MERN Stack Development", description: "Full-stack applications with MongoDB, Express, React, and Node.js", color: "#61dafb" },
@@ -94,13 +106,12 @@ const Page = () => {
     { icon: "fas fa-envelope", title: "Email Marketing", description: "Engage customers with targeted email campaigns", color: "#ea4335" },
     { icon: "fas fa-ad", title: "PPC Advertising", description: "Get instant traffic with Google Ads and paid campaigns", color: "#4285f4" },
     { icon: "fas fa-paint-brush", title: "UI/UX Design", description: "Beautiful, user-friendly interfaces that keep visitors engaged", color: "#9c27b0" },
-    { icon: "fas fa-palette", title: "Canva Design Services", description: "Professional graphics, logos, and branding materials", color: "#00c4cc" },
-    { icon: "fas fa-video", title: "Video Editing", description: "Engaging video content for social media and marketing", color: "#ff6b6b" },
     { icon: "fas fa-shopping-cart", title: "E-commerce Solutions", description: "Sell your products online with secure payment systems", color: "#f39c12" },
-    { icon: "fas fa-boxes", title: "Inventory Management", description: "Smart systems to track and manage your products", color: "#3498db" }
+    { icon: "fas fa-boxes", title: "Inventory Management", description: "Smart systems to track and manage your products", color: "#3498db" },
+    { icon: "fas fa-video", title: "Video Editing", description: "Engaging video content for social media and marketing", color: "#ff6b6b" }
   ];
 
-  // Why choose us points
+  /** Value propositions */
   const whyChooseUs = [
     { icon: "fas fa-check-circle", title: "Real Client Experience", description: "5+ businesses trust us for their online presence" },
     { icon: "fas fa-rocket", title: "Fast Delivery", description: "Get your website live in days, not months" },
@@ -109,7 +120,7 @@ const Page = () => {
     { icon: "fas fa-headset", title: "24/7 Support", description: "We're always here when you need us" }
   ];
 
-  // Process steps
+  /** Development process */
   const processSteps = [
     { step: "01", title: "Share Your Requirement", description: "Tell us about your business and goals", icon: "fas fa-comments" },
     { step: "02", title: "We Design Your Website", description: "Create a custom design that reflects your brand", icon: "fas fa-pen-fancy" },
@@ -117,7 +128,7 @@ const Page = () => {
     { step: "04", title: "Launch & Support", description: "Go live with ongoing maintenance", icon: "fas fa-rocket" }
   ];
 
-  // Portfolio items for showcase
+  /** Portfolio items with results data */
   const portfolioItems = [
     { name: "PTLR College Faridabad", category: "Education Website", image: "/images/ptlr.png", result: "Student inquiries increased by 100%" },
     { name: "SK Healthcare", category: "Healthcare Website", image: "/images/sk.png", result: "Patient appointments up 80%" },
@@ -125,7 +136,7 @@ const Page = () => {
     { name: "Restaurant Website", category: "Food & Beverage", image: "/images/restaurant.png" }
   ];
 
-  // JSON-LD Schema with real data
+  /** Structured data for SEO (JSON-LD) */
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -161,8 +172,13 @@ const Page = () => {
     }
   };
 
+  // ============================================================================
+  // Render
+  // ============================================================================
+
   return (
     <>
+      {/* Structured Data for SEO */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -175,6 +191,7 @@ const Page = () => {
           className="sticky-whatsapp" 
           target="_blank" 
           rel="noopener noreferrer"
+          aria-label="Chat on WhatsApp"
         >
           <i className="fab fa-whatsapp"></i>
           <span>Chat on WhatsApp</span>
@@ -196,7 +213,7 @@ const Page = () => {
           <div className="container">
             <div className="hero-content">
               <div className="hero-badge animate-fade-in">
-                <i className="fas fa-star"></i> Trusted by 35+ Businesses
+                <i className="fas fa-star"></i> Trusted by 5+ Businesses
               </div>
               <h1 className="animate-slide-up">
                 We Build Websites That <span className="highlight">Grow Your Business</span>
@@ -223,7 +240,7 @@ const Page = () => {
           </div>
         </section>
 
-        {/* Trust Section - Real Stats */}
+        {/* Trust Indicators */}
         <section className="trust-section">
           <div className="container">
             <div className="trust-grid">
@@ -253,7 +270,7 @@ const Page = () => {
           </div>
         </section>
 
-        {/* Real Client Showcase Section */}
+        {/* Client Showcase */}
         <section className="clients-showcase">
           <div className="container">
             <div className="section-header">
@@ -330,7 +347,7 @@ const Page = () => {
           </div>
         </section>
 
-        {/* Portfolio Preview Section */}
+        {/* Portfolio Preview */}
         <section id="portfolio" className="portfolio-section">
           <div className="container">
             <div className="section-header">
@@ -444,67 +461,69 @@ const Page = () => {
             </div>
           </div>
         </section>
-<section className="reviews-section">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="section-header"
-          >
-            <div className="google-badge">
-              <FaGoogle className="google-icon" />
-              <span className="google-title">Google Reviews</span>
-            </div>
-            <div className="rating-display">
-              <div className="stars-container">
-                {renderStars(4.9)}
+
+        {/* Google Reviews Section */}
+        <section className="reviews-section">
+          <div className="container">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="section-header"
+            >
+              <div className="google-badge">
+                <FaGoogle className="google-icon" />
+                <span className="google-title">Google Reviews</span>
               </div>
-              <span className="rating-value">4.9</span>
-              <span className="rating-count">({reviews.length} reviews)</span>
-            </div>
-          </motion.div>
-
-          <div className="reviews-grid">
-            {reviews.map((review, index) => (
-              <motion.div
-                key={review.id || index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="review-card"
-              >
-                <div className="review-card-inner">
-                  <div className="review-header">
-                    <div className="reviewer-avatar">
-                      {review.author_name?.charAt(0) || 'U'}
-                    </div>
-                    <div className="reviewer-info">
-                      <h3 className="reviewer-name">{review.author_name}</h3>
-                      <span className="review-time">{review.relative_time_description}</span>
-                    </div>
-                  </div>
-                  
-                  <div className="review-rating">
-                    {renderStars(review.rating)}
-                  </div>
-                  
-                  <p className="review-text">
-                    "{review.text}"
-                  </p>
-                  
-                  <div className="review-source">
-                    <FaGoogle className="source-icon" />
-                    <span className="source-text">Google Review</span>
-                  </div>
+              <div className="rating-display">
+                <div className="stars-container">
+                  {renderStars(4.9)}
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+                <span className="rating-value">4.9</span>
+                <span className="rating-count">({reviews.length} reviews)</span>
+              </div>
+            </motion.div>
 
-        {/* Final CTA Section */}
+            <div className="reviews-grid">
+              {reviews.map((review, index) => (
+                <motion.div
+                  key={review.id || index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="review-card"
+                >
+                  <div className="review-card-inner">
+                    <div className="review-header">
+                      <div className="reviewer-avatar">
+                        {review.author_name?.charAt(0) || 'U'}
+                      </div>
+                      <div className="reviewer-info">
+                        <h3 className="reviewer-name">{review.author_name}</h3>
+                        <span className="review-time">{review.relative_time_description}</span>
+                      </div>
+                    </div>
+                    
+                    <div className="review-rating">
+                      {renderStars(review.rating)}
+                    </div>
+                    
+                    <p className="review-text">
+                      "{review.text}"
+                    </p>
+                    
+                    <div className="review-source">
+                      <FaGoogle className="source-icon" />
+                      <span className="source-text">Google Review</span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Final Call to Action */}
         <section className="final-cta">
           <div className="container">
             <div className="cta-content">
@@ -525,7 +544,7 @@ const Page = () => {
           </div>
         </section>
 
-        {/* Contact Info Footer */}
+        {/* Contact Information Footer */}
         <section className="contact-info-section">
           <div className="container">
             <div className="contact-grid">
@@ -554,13 +573,14 @@ const Page = () => {
           </div>
         </section>
 
-        {/* Consultation Popup */}
+        {/* Consultation Popup Modal */}
         <ConsultationPopup 
           isOpen={isPopupOpen} 
           onClose={() => setIsPopupOpen(false)} 
         />
       </div>
 
+      {/* Inline Styles for Floating Elements */}
       <style jsx>{`
         .floating-consult-btn {
           position: fixed;

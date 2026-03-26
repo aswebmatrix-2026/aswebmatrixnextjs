@@ -3,12 +3,12 @@
 :root {
   --primary: #00c49a;
   --primary-dark: #00a37a;
-  --primary-light: #e0f9f2;
+  --primary-light: #ffffff;
   --dark: #2b3c56;
   --dark-light: #3a4c6a;
   --white: #ffffff;
-  --gray-100: #f8f9fa;
-  --gray-200: #e9ecef;
+  --gray-100: #ffffff;
+  --gray-200: #ffffff;
   --gray-500: #6c757d;
   --gray-600: #495057;
   --gray-700: #2b3c56;
@@ -624,7 +624,7 @@ html {
   padding: 80px 0;
   background: white;
   position: relative;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #fffbfb;
 }
 
 @media (max-width: 768px) {
@@ -1980,7 +1980,7 @@ html {
 
 .star-filled { color: #fbbf24; }
 .star-half { color: #fbbf24; }
-.star-empty { color: #d1d5db; }
+.star-empty { color: #ffffff; }
 
 .rating-value {
   font-size: clamp(1.2rem, 5vw, 2rem);
