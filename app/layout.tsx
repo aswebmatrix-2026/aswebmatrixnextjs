@@ -205,9 +205,17 @@ export default function RootLayout({
           }}
         />
 
-        {/* AdSense Ad Unit */}
+        {/* AdSense Ad Unit 1 - In Article Ad */}
+        <ins
+          className="adsbygoogle"
+          style={{ display: "block", textAlign: "center" }}
+          data-ad-layout="in-article"
+          data-ad-format="fluid"
+          data-ad-client="ca-pub-2064423755916952"
+          data-ad-slot="3004638791"
+        />
         <Script
-          id="adsense-ad-unit"
+          id="adsense-ad-unit-1"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
@@ -215,15 +223,23 @@ export default function RootLayout({
             `
           }}
         />
-        
-        {/* Ad Unit HTML */}
+
+        {/* AdSense Ad Unit 2 - Auto Relaxed Ad */}
         <ins
           className="adsbygoogle"
           style={{ display: "block" }}
-          data-ad-format="fluid"
-          data-ad-layout-key="-7c+f1-16-4w+d7"
+          data-ad-format="autorelaxed"
           data-ad-client="ca-pub-2064423755916952"
-          data-ad-slot="3932509402"
+          data-ad-slot="1691557126"
+        />
+        <Script
+          id="adsense-ad-unit-2"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            `
+          }}
         />
       </body>
     </html>
