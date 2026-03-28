@@ -1,10 +1,8 @@
-// app/page.tsx
 'use client';
 
 import React, { useState } from 'react';
 import Link from 'next/link';
 import './home.css';
-
 import { motion } from 'framer-motion';
 import { 
   FaStar, FaStarHalfAlt, FaRegStar, 
@@ -574,88 +572,9 @@ const renderStars = (rating) => {
           </div>
         </section>
 
-        {/* Consultation Popup Modal */}
-        <ConsultationPopup 
-          isOpen={isPopupOpen} 
-          onClose={() => setIsPopupOpen(false)} 
-        />
+      
       </div>
 
-      {/* Inline Styles for Floating Elements */}
-      <style jsx>{`
-        .floating-consult-btn {
-          position: fixed;
-          bottom: 30px;
-          left: 30px;
-          background: linear-gradient(135deg, #00c49a, #00a37a);
-          border: none;
-          padding: 12px 24px;
-          border-radius: 50px;
-          color: white;
-          font-weight: 600;
-          cursor: pointer;
-          z-index: 999;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          box-shadow: 0 5px 20px rgba(0, 196, 154, 0.4);
-          transition: all 0.3s ease;
-          font-size: 14px;
-        }
-
-        .floating-consult-btn:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 8px 25px rgba(0, 196, 154, 0.5);
-        }
-
-        .floating-consult-btn i {
-          font-size: 18px;
-        }
-
-        .view-more-wrapper {
-          text-align: center;
-          margin-top: 40px;
-        }
-
-        .view-more-btn {
-          background: transparent;
-          border: 2px solid #00c49a;
-          padding: 12px 30px;
-          border-radius: 50px;
-          color: #00c49a;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          font-size: 16px;
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-        }
-
-        .view-more-btn:hover {
-          background: #00c49a;
-          color: white;
-          transform: translateY(-2px);
-        }
-
-        @media (max-width: 768px) {
-          .floating-consult-btn span {
-            display: none;
-          }
-          
-          .floating-consult-btn {
-            padding: 12px;
-            border-radius: 50%;
-            bottom: 20px;
-            left: 20px;
-          }
-          
-          .floating-consult-btn i {
-            margin: 0;
-            font-size: 20px;
-          }
-        }
-      `}</style>
     </>
   );
 };

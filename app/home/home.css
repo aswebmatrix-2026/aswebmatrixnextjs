@@ -317,9 +317,10 @@ html {
   line-height: 1.2;
   background: linear-gradient(135deg, #ffffff, var(--primary));
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  color: white;
 }
+
 
 .hero h1 .highlight {
   background: var(--dark);

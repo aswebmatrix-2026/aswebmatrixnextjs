@@ -71,6 +71,13 @@ export default function RootLayout({
         <meta name="geo.region" content="IN" />
         <meta name="geo.placename" content="Faridabad, Delhi NCR" />
        
+        {/* Google AdSense Script */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2064423755916952"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Header />
@@ -198,6 +205,26 @@ export default function RootLayout({
           }}
         />
 
+        {/* AdSense Ad Unit */}
+        <Script
+          id="adsense-ad-unit"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            `
+          }}
+        />
+        
+        {/* Ad Unit HTML */}
+        <ins
+          className="adsbygoogle"
+          style={{ display: "block" }}
+          data-ad-format="fluid"
+          data-ad-layout-key="-7c+f1-16-4w+d7"
+          data-ad-client="ca-pub-2064423755916952"
+          data-ad-slot="3932509402"
+        />
       </body>
     </html>
   );
